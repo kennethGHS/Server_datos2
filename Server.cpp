@@ -6,6 +6,7 @@
 #include "Json_Factory.h"
 
 void Server::initiateConection() {
+
     client=socket(AF_INET,SOCK_STREAM,0);
     if(client<0){
         std::cout<<"ERROR CREATING SOCKET"<< "\n";

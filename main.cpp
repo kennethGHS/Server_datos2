@@ -1,13 +1,21 @@
 #include <iostream>
 #include <jsoncpp/json/json.h>
 #include <json-c/json.h>
+#include <thread>
+#include "Server.h"
+
+void activation(){
+    Server* servidor = new Server();
+    servidor->initiateConection();
+}
 int main() {
 
 //    std::cout << "Hello, World!" << std::endl;
 //    Json::Value lol;
 //    lol["kol"];
 //
-
+    std::thread hilo (activation);
+    hilo.join();
    struct json_object* objeto = json_object_new_object();
     struct json_object* str1 = json_object_new_string("PARSEO 1 :D");
     struct json_object* str2 = json_object_new_string("MAS DE ESO ES EL NUMERO 2");
