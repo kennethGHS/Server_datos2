@@ -38,6 +38,7 @@ json_object* Json_Factory::createJson(json_object *objeto) {
 json_object* Json_Factory::createCharJson(json_object *objeto) {
     struct json_object* str1 = json_object_new_string("1");
     char *character =(char*)malloc(sizeof(char));
+
     json_object_object_add(objeto,"Tamano",str1);
     return objeto;
 
@@ -45,6 +46,7 @@ json_object* Json_Factory::createCharJson(json_object *objeto) {
 json_object* Json_Factory::createDoubleJson(json_object *objeto) {
     struct json_object* str1 = json_object_new_string("8");
     double *character =(double*)malloc(sizeof(double));
+
     json_object_object_add(objeto,"Tamano",str1);
     return objeto;
 }

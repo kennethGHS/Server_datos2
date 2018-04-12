@@ -23,6 +23,7 @@ public :
     void initiateConection();
     void parseObject(char* object);
     void sendJson(char* json);
+
 };
 
 
