@@ -7,9 +7,11 @@
 
 
 #include <json-c/json_object.h>
+#include "Allocator/Maper.h"
 
 class Json_Factory {
 public:
+    static Maper* map;
 static json_object* createJson(json_object* objeto);
     static json_object* createIntJson(json_object* objeto);
     static json_object* createCharJson(json_object* objeto);

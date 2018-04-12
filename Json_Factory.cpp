@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include "Json_Factory.h"
+static Maper* map = new Maper(10000);
 json_object* Json_Factory::createJson(json_object *objeto) {
     char character = json_object_to_json_string(json_object_object_get(objeto,"Type"))[0];
     if(character=='C'){
