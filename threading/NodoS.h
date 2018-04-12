@@ -13,7 +13,6 @@ public:
     NodoS* next= nullptr;
 };
 
-};
 
 
 #endif //SERVER_D2_NODOS_H
