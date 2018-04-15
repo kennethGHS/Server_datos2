@@ -13,13 +13,11 @@
 #include <json-c/json.h>
 class Server {
 public :
-    int client,server;
-    int portNum =1500;
-    bool isExit= false;
+    int server;
+
     const int bufsize=1024;
-    char buffer[1024];
-    struct sockaddr_in server_addr;
-    socklen_t size;
+
+
     void initiateConection();
     void parseObject(char* object);
     void sendJson(char* json);

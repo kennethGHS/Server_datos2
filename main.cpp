@@ -10,18 +10,20 @@ void activation(){
     servidor->initiateConection();
 }
 int main() {
+    Server server = Server();
+    server.initiateConection();
 
 //    std::cout << "Hello, World!" << std::endl;
 //    Json::Value lol;
 //    lol["kol"];
 //
-    MyThread* threaded = new MyThread();
-    threaded->addT(activation);
-    threaded->startT();
-    std::cout<<"ALJFHKJAFHJKAFKJ"<<std::endl;
-    while (true){
-
-    }
+//    MyThread* threaded = new MyThread();
+//    threaded->addT(activation);
+//    threaded->startT();
+//    std::cout<<"ALJFHKJAFHJKAFKJ"<<std::endl;
+//    while (true){
+//
+//    }
 //   struct json_object* objeto = json_object_new_object();
 //    struct json_object* str1 = json_object_new_string("PARSEO 1 :D");
 //    struct json_object* str2 = json_object_new_string("MAS DE ESO ES EL NUMERO 2");
