@@ -39,7 +39,7 @@ void Server::initiateConection() {
     listen(client, 1);
     int clientCount = 1;
     server = accept(client,(struct sockaddr *)&server_addr,&size);
-
+this->server=server;
     // first check if it is valid or not
     if (server < 0)
         std::cout << "=> Error on accepting..." << std::endl;
@@ -67,8 +67,10 @@ void Server::initiateConection() {
 
 }
 void Server::parseObject(char *object) {
+    std::cout<<object<<std::endl;
     json_object* json = json_tokener_parse(object);
     json_object* to_Return=Json_Factory::createJson(json);
+    std::cout<<json_object_to_json_string(to_Return)<<std::endl;
     send(server,json_object_to_json_string(to_Return),bufsize,0);
 
 //    while(server>0){

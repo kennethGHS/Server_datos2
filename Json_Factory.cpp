@@ -5,7 +5,9 @@
 #include "Json_Factory.h"
  Maper* Json_Factory::map = new Maper(100000);
 json_object* Json_Factory::createJson(json_object *objeto) {
-    char character = json_object_to_json_string(json_object_object_get(objeto,"Type"))[1];
+    std::cout<<json_object_to_json_string(json_object_object_get(objeto,"type"))<<std::endl;
+    char character = json_object_to_json_string(json_object_object_get(objeto,"type"))[1];
+    std::cout<<character<<"KAJFAKJFKAJFGKAJGFKAJGF"<<std::endl;
     if(character=='c'){
         std::cout<<"Maping type Char"<<"\n";
         return createCharJson(objeto);
