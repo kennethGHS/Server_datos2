@@ -8,7 +8,7 @@
 
 #include <json-c/json_object.h>
 #include "Allocator/Maper.h"
-
+#include <QString>
 class Json_Factory {
 public:
     static Maper* map;
@@ -20,7 +20,8 @@ static json_object* createJson(json_object* objeto);
     static json_object* createReferenceJson(json_object* objeto);
     static json_object* createFloatJson(json_object* objeto);
     static json_object* createStructJson(json_object* objeto);
-
+    static QString* parse_whitout_comillas(char* string);
+    static bool parse_bool(char* string);
 };
 
 

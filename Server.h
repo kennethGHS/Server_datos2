@@ -19,9 +19,10 @@ public :
 
 
     void initiateConection();
-    void parseObject(char* object);
+    json_object * parseObject(char* object);
     void sendJson(char* json);
 
+    const char *parse(char *object);
 };
 
 

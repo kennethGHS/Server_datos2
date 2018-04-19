@@ -4,14 +4,14 @@
 #include <iostream>
 #include "Server.h"
 #include "Json_Factory.h"
-
+#include <json-c/json_tokener.h>
 void Server::initiateConection() {
     int client, server;
     int portNum = 1500;
     bool isExit = false;
     int bufsize = 1024;
     char buffer[bufsize];
-
+//
     struct sockaddr_in server_addr;
     socklen_t size;
     client = socket(AF_INET, SOCK_STREAM, 0);
@@ -49,7 +49,7 @@ this->server=server;
         if(counter==0){
             strcpy(buffer, "=> Server connected...\n");
             counter++;
-
+//
             send(server, buffer, bufsize, 0);
             std::cout << "=> Connected with the client #" << clientCount << ", you are good to go..." << std::endl;
             std::cout << "\n=> Enter # to end the connection\n" << std::endl;}
@@ -58,24 +58,50 @@ this->server=server;
             return;
         }
         std::cout<<buffer<<"JSON recibido....."<<"\n"<<"Parsing"<<"\n";
-        parseObject(buffer);
+        json_object* variable= parseObject(buffer);
 
+        if(variable== nullptr){
+            std::cout<<"ERROR se perdio la conexion con el servidor"<<std::endl;
+            return ;
+        }
+        json_object_put(variable);
 
 
     }
 
 
 }
-void Server::parseObject(char *object) {
+/**
+ * parsea el objeto
+ * @param object
+ * @return lol
+ */
+json_object* Server::parseObject(char *object) {
+    if(object== nullptr){
+        std::cout<<"LLOLOLOL"<<std::endl;
+    }
+    //
     std::cout<<object<<std::endl;
     json_object* json = json_tokener_parse(object);
     json_object* to_Return=Json_Factory::createJson(json);
+    if(to_Return== nullptr){
+        return nullptr;
+    }
     std::cout<<json_object_to_json_string(to_Return)<<std::endl;
-    send(server,json_object_to_json_string(to_Return),bufsize,0);
+    const char* enviar =json_object_to_json_string(to_Return);
+    send(server,enviar,bufsize,0);
+    return to_Return;
 
 //    while(server>0){
 //        std::cout<<"ENTRE EN LA ESPERA"<<std::endl;
 //        strcpy(buffer,"ServerConnected////\n");
 
 //    }
+}
+
+const char *Server::parse(char *object) {
+    QString str = QString(object);
+    QString vara = QString();
+    int index = 0;
+    int parenCounter=0;
 }
