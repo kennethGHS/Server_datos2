@@ -57,7 +57,7 @@ json_object* Json_Factory::createJson(json_object *objeto) {
  * @return
  */
 json_object* Json_Factory::createCharJson(json_object *objeto) {
-     json_object* str1 = json_object_new_string(std::to_string(map->freeposition).c_str());
+     json_object* str1 = json_object_new_string(std::to_string(static_reserver::var->freeposition).c_str());
 
     json_object_object_add(objeto,"Position",str1);
     QString * value =parse_whitout_comillas((char*)json_object_to_json_string(json_object_object_get(objeto,"value")));
@@ -79,7 +79,7 @@ json_object* Json_Factory::createCharJson(json_object *objeto) {
 
 }
 json_object* Json_Factory::createDoubleJson(json_object *objeto) {
-    struct json_object* str1 = json_object_new_string(std::to_string(map->freeposition).c_str());
+    struct json_object* str1 = json_object_new_string(std::to_string(static_reserver::var->freeposition).c_str());
     double *character =(double*)malloc(sizeof(double));
 
     json_object_object_add(objeto,"Position",str1);
@@ -174,6 +174,7 @@ QString* Json_Factory::parse_whitout_comillas(char* string) {
     }
     return var_toreturn;
 }
+//
 bool Json_Factory::parse_bool(char *string) {
     QString var = QString(string);
     return var.contains("true");

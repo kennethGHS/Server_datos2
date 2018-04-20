@@ -46,26 +46,30 @@ this->server=server;
     int counter = 0;
     while (server > 0)
     {
-        if(counter==0){
-            strcpy(buffer, "=> Server connected...\n");
-            counter++;
+        try {
+            if (counter == 0) {
+                strcpy(buffer, "=> Server connected...\n");
+                counter++;
 //
-            send(server, buffer, bufsize, 0);
-            std::cout << "=> Connected with the client #" << clientCount << ", you are good to go..." << std::endl;
-            std::cout << "\n=> Enter # to end the connection\n" << std::endl;}
-                recv(server,buffer,bufsize,0);
-        if(buffer== nullptr|| sizeof(buffer)==0){
+                send(server, buffer, bufsize, 0);
+                std::cout << "=> Connected with the client #" << clientCount << ", you are good to go..." << std::endl;
+                std::cout << "\n=> Enter # to end the connection\n" << std::endl;
+            }
+            recv(server, buffer, bufsize, 0);
+            if (buffer == nullptr || sizeof(buffer) == 0) {
+                return;
+            }
+            std::cout << buffer << "JSON recibido....." << "\n" << "Parsing" << "\n";
+            json_object *variable = parseObject(buffer);
+
+            if (variable == nullptr) {
+                std::cout << "ERROR se perdio la conexion con el servidor" << std::endl;
+                return;
+            }
+            json_object_put(variable);
+        }catch(__exception){
             return;
         }
-        std::cout<<buffer<<"JSON recibido....."<<"\n"<<"Parsing"<<"\n";
-        json_object* variable= parseObject(buffer);
-
-        if(variable== nullptr){
-            std::cout<<"ERROR se perdio la conexion con el servidor"<<std::endl;
-            return ;
-        }
-        json_object_put(variable);
-
 
     }
 
@@ -77,6 +81,7 @@ this->server=server;
  * @return lol
  */
 json_object* Server::parseObject(char *object) {
+
     if(object== nullptr){
         std::cout<<"LLOLOLOL"<<std::endl;
     }
@@ -95,7 +100,7 @@ json_object* Server::parseObject(char *object) {
 //    while(server>0){
 //        std::cout<<"ENTRE EN LA ESPERA"<<std::endl;
 //        strcpy(buffer,"ServerConnected////\n");
-
+//
 //    }
 }
 

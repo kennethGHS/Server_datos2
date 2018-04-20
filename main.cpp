@@ -12,7 +12,7 @@ void activation(){
 int main() {
     Server server = Server();
     server.initiateConection();
-//
+
 //    std::cout << "Hello, World!" << std::endl;
 //    Json::Value lol;
 //    lol["kol"];

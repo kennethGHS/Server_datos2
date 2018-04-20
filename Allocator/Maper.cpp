@@ -57,8 +57,4 @@ void Maper::add_variable(long variable) {
     *(long *)((char*)variables+freeposition) =variable;
     freeposition+=8;
 }
-void Maper::free_memory() {
-    free(variables);
-    variables = malloc(bites);
-    freeposition=0;
-}
+
