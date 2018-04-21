@@ -9,7 +9,7 @@ find_package(Qt5Network REQUIRED)
 find_package(Qt5Sql REQUIRED)
 find_package(Qt5PrintSupport REQUIRED)
 find_package(Qt5Xml REQUIRED)
-add_executable(Server_d2 main.cpp Server.cpp Server.h Json_Factory.cpp Json_Factory.h Allocator/Maper.cpp Allocator/Maper.h Allocator/Simple_List.cpp Allocator/Simple_List.h Allocator/Simple_Node.cpp Allocator/Simple_Node.h threading/ListaSimple.h threading/ListaSimple.cpp threading/NodoS.h threading/NodoS.cpp threading/MyThread.cpp threading/MyThread.h Allocator/static_reserver.cpp Allocator/static_reserver.h)
+add_executable(Server_d2 main.cpp Server.cpp Server.h Json_Factory.cpp Json_Factory.h Allocator/Maper.cpp Allocator/Maper.h Allocator/Simple_List.cpp Allocator/Simple_List.h Allocator/Simple_Node.cpp Allocator/Simple_Node.h threading/ListaSimple.h threading/ListaSimple.cpp threading/NodoS.h threading/NodoS.cpp threading/MyThread.cpp threading/MyThread.h Allocator/static_reserver.cpp Allocator/static_reserver.h Comprobate_loop.cpp Comprobate_loop.h)
 target_link_libraries(Server_d2 json-c)
 target_link_libraries(Server_d2 pthread)
 target_link_libraries(Server_d2 Qt5::Widgets Qt5::Core Qt5::Network Qt5::Sql

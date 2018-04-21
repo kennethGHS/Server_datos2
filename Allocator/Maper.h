@@ -28,6 +28,7 @@ Maper(int bits){
     void add_variable(struct value);
     void add_variable(bool value);
     void add_variable(float value);
+    void sumar_free(int var);
 
 };
 

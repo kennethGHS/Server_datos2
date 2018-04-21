@@ -22,6 +22,8 @@ static json_object* createJson(json_object* objeto);
     static json_object* createStructJson(json_object* objeto);
     static QString* parse_whitout_comillas(char* string);
     static bool parse_bool(char* string);
+
+    static json_object *reserve_space_struct(json_object *pObject);
 };
 
 

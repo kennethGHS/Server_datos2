@@ -40,13 +40,12 @@ json_object* Json_Factory::createJson(json_object *objeto) {
         return createReferenceJson(objeto);
 
     }
-    if(character=='s'){
-        std::cout<<"Maping type Struct"<<"\n";
-        return createStructJson(objeto);
-    }
     if(character=='b'){
         std::cout<<"Maping type Struct"<<"\n";
         return createCharJson(objeto);
+    }
+    if(character=='s'){
+        return reserve_space_struct(objeto);
     }
     return nullptr;
 }
@@ -178,4 +177,18 @@ QString* Json_Factory::parse_whitout_comillas(char* string) {
 bool Json_Factory::parse_bool(char *string) {
     QString var = QString(string);
     return var.contains("true");
+}
+
+json_object *Json_Factory::reserve_space_struct(json_object *pObject) {
+    QString * value =parse_whitout_comillas((char*)json_object_to_json_string(json_object_object_get(pObject,"peso")));
+    bool x;
+    struct json_object* str1 = json_object_new_string(std::to_string(static_reserver::var->freeposition).c_str());
+    json_object_object_add(pObject,"Position",str1);
+    int z = value->toInt(&x);
+    if(x==false){
+        static_reserver::var->freeposition+=20;
+        return pObject;
+    }
+    static_reserver::var->freeposition+=z;
+    return pObject;
 }

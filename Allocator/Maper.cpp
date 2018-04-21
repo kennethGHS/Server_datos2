@@ -58,3 +58,4 @@ void Maper::add_variable(long variable) {
     freeposition+=8;
 }
 
+

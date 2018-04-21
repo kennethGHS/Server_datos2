@@ -1,5 +1,4 @@
 #include <iostream>
-#include <jsoncpp/json/json.h>
 #include <json-c/json.h>
 #include <thread>
 #include "Server.h"

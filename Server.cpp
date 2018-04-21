@@ -4,7 +4,10 @@
 #include <iostream>
 #include "Server.h"
 #include "Json_Factory.h"
+#include "Comprobate_loop.h"
 #include <json-c/json_tokener.h>
+#include <bits/signum.h>
+#include <signal.h>
 void Server::initiateConection() {
     int client, server;
     int portNum = 1500;
@@ -67,7 +70,7 @@ this->server=server;
                 return;
             }
             json_object_put(variable);
-        }catch(__exception){
+        }catch(__exception exception){
             return;
         }
 
@@ -94,7 +97,14 @@ json_object* Server::parseObject(char *object) {
     }
     std::cout<<json_object_to_json_string(to_Return)<<std::endl;
     const char* enviar =json_object_to_json_string(to_Return);
-    send(server,enviar,bufsize,0);
+    signal(SIGPIPE, SIG_IGN);
+    if(Comprobate_loop::valor==QString(enviar)){
+        return nullptr;
+    }
+    else{
+        Comprobate_loop::valor=QString(enviar);
+    }
+    send(server,enviar,bufsize,MSG_NOSIGNAL);
     return to_Return;
 
 //    while(server>0){
